@@ -78,7 +78,7 @@ const prompts = {
         name: 'name'
     },
 
-    updateEmployee: [
+    updateEmp: [
         {
             type: 'input',
             message: "Enter ID of Employee to Update",

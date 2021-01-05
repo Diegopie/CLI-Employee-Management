@@ -34,6 +34,7 @@ function userCase() {
                     updateEmployee();
                     break;
                 case 'Quit':
+                    connection.end();
                     break;
             }
         })
@@ -45,7 +46,6 @@ function viewEmployees() {
 };
 
 function viewRoles() {
-    console.log('viewRoles');
     connection.query('Select * from role', (err, res) => {
         if (err) throw err;
         console.table(res);
@@ -54,7 +54,6 @@ function viewRoles() {
 };
 
 function viewDep() {
-    console.log('viewDep');
     connection.query('Select * from department', (err, res) => {
         if (err) throw err;
         console.table(res);
@@ -63,7 +62,6 @@ function viewDep() {
 };
 
 function addEmployee() {
-    console.log('addEmployee');
     inquirer
         .prompt(prompts.addEmp)
         .then((res) => {
@@ -77,14 +75,14 @@ function addEmployee() {
                     "${res.manager_id}")
       `, (err, res) => {
                 if (err) throw err;
-                console.table(res);
+                // console.table(res);
+                console.log("Record Updated!");
                 userCase();
             })
         })
 };
 
 function addRole() {
-    console.log('addRole');
     inquirer
         .prompt(prompts.addRole)
         .then((res) => {
@@ -97,15 +95,14 @@ function addRole() {
                     "${res.department_id}")
       `, (err, res) => {
                 if (err) throw err;
-                console.table(res);
+                // console.table(res);
+                console.log("Record Updated!");
                 userCase();
             })
         })
 };
 
 function addDept() {
-    console.log('addDept');
-    console.log('addRole');
     inquirer
         .prompt(prompts.addDept)
         .then((res) => {
@@ -116,12 +113,26 @@ function addDept() {
                     ("${res.name}")
       `, (err, res) => {
                 if (err) throw err;
-                console.table(res);
+                // console.table(res);
+                console.log("Record Updated!");
                 userCase();
             })
         })
 };
 
 function updateEmployee() {
-    console.log('updateEmployee');
+    inquirer
+        .prompt(prompts.updateEmp)
+        .then((res) => {
+            connection.query(
+                `UPDATE employee 
+                SET role_id = "${res.role_id}" 
+                WHERE id = "${res.employee_id}"
+      `, (err, res) => {
+                if (err) throw err;
+                // console.table(res);
+                console.log("Record Updated!");
+                userCase();
+            })
+        })
 };
