@@ -42,7 +42,6 @@ function userCase() {
 
 
 function viewEmployees() {
-    console.log('viewEmployees');
     connection.query(
         `SELECT
             employee.id, employee.first_name, employee.last_name, role.title, department.name, role.salary, CONCAT (manager.first_name, ' ', manager.last_name)
@@ -53,7 +52,7 @@ function viewEmployees() {
         `, (err, res) => {
             if (err) throw err;
                 console.table(res);
-                console.log("Record Updated!");
+                
                 userCase();
         }
     )
