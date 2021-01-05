@@ -90,7 +90,7 @@ function addEmployee() {
                 if (err) throw err;
                 // console.table(res);
                 console.log("Record Updated!");
-                userCase();
+                viewEmployees();
             })
         })
 };
@@ -110,7 +110,7 @@ function addRole() {
                 if (err) throw err;
                 // console.table(res);
                 console.log("Record Updated!");
-                userCase();
+                viewRoles();
             })
         })
 };
@@ -128,7 +128,7 @@ function addDept() {
                 if (err) throw err;
                 // console.table(res);
                 console.log("Record Updated!");
-                userCase();
+                viewDep();
             })
         })
 };
@@ -145,7 +145,7 @@ function updateEmployee() {
                 if (err) throw err;
                 // console.table(res);
                 console.log("Record Updated!");
-                userCase();
+                viewEmployees();
             })
         })
 };
